@@ -89,6 +89,7 @@ class AllSteps(BasePage):
     UPDATE_PROFILE_BUTTON = (By.XPATH,"/html//div[@id='tabpanel-1']//form/div[@class='MuiBox-root css-16332ei']/button[@type='button']")
     PASSWORD_EDITUSER = (By.XPATH,"/html//input[@id='password']")
     CHECK_SUCCESS_NOTIFICATION =(By.XPATH,"/html//div[@id='notistack-snackbar']")
+    BLANK_FILED_PASSWORD_ERROR = (By.XPATH,"/html//div[@id='tabpanel-1']//form//p[.='The field is required']")
 
 
     def driver_refresh(self):
@@ -97,22 +98,22 @@ class AllSteps(BasePage):
     def input_clock_mode(self):
         clockmode_button = self.driver.find_element(*self.CLOCKMODE_BUTTON)
         clockmode_button.click()
-        time.sleep(2)
+
 
     def user_menu_icon(self):
         user_menu_icon = self.driver.find_element(*self.USERMENU_ICON)
         user_menu_icon.click()
-        time.sleep(2)
+
 
     def change_clock_mode(self):
         change_clockmode_button = self.driver.find_element(*self.CHANGE_CLOCKMODE_BUTTON)
         change_clockmode_button.click()
-        time.sleep(3)
+
 
     def input_setting_mode(self):
         setting_button = self.driver.find_element(*self.SETTING_BUTTON)
         setting_button.click()
-        time.sleep(3)
+
 
     def input_username(self, username):
         username_input = self.driver.find_element(*self.USERNAME_SELECTOR)
@@ -269,7 +270,7 @@ class AllSteps(BasePage):
     def change_password_button(self):
         change_password_button = self.driver.find_element(*self.CHANGE_PASSWORD_BUTTON)
         change_password_button.click()
-        time.sleep(2)
+
 
     def current_password(self, current_password):
         current_password_input = self.driver.find_element(*self.CURRENT_PASSWORD)
@@ -419,7 +420,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    time.sleep(5)
+
 
     # Create User invalid_fullname_error
     def invalid_fullname_error(self):
@@ -447,7 +448,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    time.sleep(5)
+
 
     # Create User password_mismatch_error
     def password_mismatch_error(self):
@@ -467,7 +468,7 @@ class AllSteps(BasePage):
     def click_edit_profile(self):
         click_edit_profile = self.driver.find_element(*self.EDIT_PROFILE)
         click_edit_profile.click()
-        time.sleep(2)
+
 
 
 
@@ -491,11 +492,24 @@ class AllSteps(BasePage):
         UpdateProfile.click()
 
 
+    # Settng Edt user profile success message
     def check_success_message(self):
         loop_count = 0
         while loop_count < 1:
             try:
                 web_element = self.driver.find_element(*self.CHECK_SUCCESS_NOTIFICATION)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+    # Settings Edt user profile password filed s blank error message
+    def check_error_blank_field(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.BLANK_FILED_PASSWORD_ERROR)
                 return web_element
             except WebDriverException:
                 pass
@@ -527,13 +541,13 @@ def step_impl(context, username, password):
 @step("clicks on the login button")
 def step_impl(context):
     context.allSteps.click_login()
-    time.sleep(3)
+
 
 
 @step("clicks on the action button")
 def step_impl(context):
     context.allSteps.click_action_btn()
-    time.sleep(3)
+
 
 
 @then("the user should be redirected to the homepage")
@@ -889,3 +903,10 @@ def step_impl(context):
         print("FAILURE: The error message is not displayed.")
 
 
+@step("Check that profile is not updated")
+def step_impl(context):
+    error_blank_field = context.allSteps.check_error_blank_field()
+    if error_blank_field.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")

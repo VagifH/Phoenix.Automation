@@ -80,6 +80,17 @@ class AllSteps(BasePage):
     INVALID_PHONE_NUMBER_ERROR = (By.CSS_SELECTOR,"form .css-z7vtc8:nth-of-type(5) p")
     PASSWORD_MISMATCH = (By.CSS_SELECTOR,"form .css-z7vtc8:nth-of-type(7) [class='MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1lisuo3']")
 
+
+    #Setting Edit User Pofle
+
+    EDIT_PROFILE = (By.CSS_SELECTOR,"div[role='tablist'] > button:nth-of-type(2)")
+    FULLNAME_EDIT_USERPROFILE = (By.XPATH,"//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue']) [1]")
+    EMAIL_ADDRESS_EDIT_USERPROFILE = (By.XPATH,"//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue'])[2]")
+    UPDATE_PROFILE_BUTTON = (By.XPATH,"/html//div[@id='tabpanel-1']//form/div[@class='MuiBox-root css-16332ei']/button[@type='button']")
+    PASSWORD_EDITUSER = (By.XPATH,"/html//input[@id='password']")
+    CHECK_SUCCESS_NOTIFICATION =(By.XPATH,"/html//div[@id='notistack-snackbar']")
+
+
     def driver_refresh(self):
         self.driver.refresh()
 
@@ -150,16 +161,16 @@ class AllSteps(BasePage):
     def input_fullname(self, fullname):
         fullname_input = self.driver.find_element(*self.FULLNAME_SELECTOR)
         fullname_input.clear()
-        time.sleep(3)
         fullname_input.send_keys(Keys.CONTROL, 'a')
         fullname_input.send_keys(Keys.BACKSPACE)
         fullname_input.send_keys(fullname)
-        time.sleep(3)
+
+
+
 
     def input_phonenumber(self, phonenumber):
         phonenumber_input = self.driver.find_element(*self.PHONENUMBER_SELECTOR)
         phonenumber_input.clear()
-        time.sleep(3)
         phonenumber_input.send_keys(Keys.CONTROL, 'a')
         phonenumber_input.send_keys(Keys.BACKSPACE)
         phonenumber_input.send_keys(phonenumber)
@@ -230,12 +241,12 @@ class AllSteps(BasePage):
     def timezone_dropdown_button(self):
         timezone_dropdown_button = self.driver.find_element(*self.TIMEZONE_DROPDOWN_BUTTON)
         timezone_dropdown_button.click()
-        time.sleep(2)
+
 
     def timezone_button(self):
         timezone_button = self.driver.find_element(*self.TIMEZONE_BUTTON)
         timezone_button.click()
-        time.sleep(2)
+
 
     def select_panama_in_dropdown_list(self):
         select_panama_in_dropdown_list = self.driver.find_element(*self.AMERICA_PANAMA_DROPDOWN_LIST)
@@ -275,7 +286,7 @@ class AllSteps(BasePage):
     def update_button(self):
         update_button = self.driver.find_element(*self.UPDATE_BUTTON)
         update_button.click()
-        time.sleep(3)
+
 
     # Change password successful notification
     def password_changed_notification(self):
@@ -289,7 +300,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    time.sleep(3)
+
 
     # Change password alert notification about confirm password is not the same
     def password_changed_alert_notification(self):
@@ -303,7 +314,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    time.sleep(3)
+
 
     # Change password alert notification about weak password
     def alert_notification_week_password(self):
@@ -321,7 +332,7 @@ class AllSteps(BasePage):
     def create_user_button(self):
         create_user_button = self.driver.find_element(*self.CREATE_USER_BUTTON)
         create_user_button.click()
-        time.sleep(1)
+
 
     # Create New User_ Fullname
     def full_name(self, full_name):
@@ -358,17 +369,17 @@ class AllSteps(BasePage):
     def set_password(self, set_password):
         set_password_input = self.driver.find_element(*self.PASSWORD_FIELD)
         set_password_input.send_keys(set_password)
-        time.sleep(1)
+
 
     def set_confirm_password(self, set_confirm_password):
         set_confirm_password_input = self.driver.find_element(*self.CONFIRM_PASSWORD_FIELD)
         set_confirm_password_input.send_keys(set_confirm_password)
-        time.sleep(1)
+
 
     def submit_button(self):
         submit_button = self.driver.find_element(*self.SUBMIT_BUTTON)
         submit_button.click()
-        time.sleep(3)
+
 
     # Create User Role is not Selected error
     def role_is_not_selected_error(self):
@@ -381,7 +392,7 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
-    time.sleep(5)
+
 
      # Create User incorrect_email_error
     def incorrect_email_error(self):
@@ -394,7 +405,7 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
-    time.sleep(5)
+
 
     # Create User invalid_username_error
     def invalid_username_error(self):
@@ -422,7 +433,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    time.sleep(5)
+
 
     # Create User invalid_phone_number_error  password_mismatch_error
     def invalid_phone_number_error(self):
@@ -450,10 +461,46 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    time.sleep(5)
+
+
+    #Settngs_Edit User Profile
+    def click_edit_profile(self):
+        click_edit_profile = self.driver.find_element(*self.EDIT_PROFILE)
+        click_edit_profile.click()
+        time.sleep(2)
 
 
 
+    #Settings_emal_adress
+    def input_email_address(self, email__address):
+        email__address_input = self.driver.find_element(*self.EMAIL_ADDRESS_EDIT_USERPROFILE)
+        email__address_input.clear()
+        email__address_input.send_keys(Keys.CONTROL, 'a')
+        email__address_input.send_keys(Keys.BACKSPACE)
+        email__address_input.send_keys(email__address)
+        time.sleep(3)
+
+    def input_update_password(self, password):
+        update_password_input = self.driver.find_element(*self.PASSWORD_EDITUSER)
+        update_password_input.send_keys(password)
+
+
+    # Settings_Update Button
+    def UpdateProfile_Click(self):
+        UpdateProfile = self.driver.find_element(*self.UPDATE_PROFILE_BUTTON)
+        UpdateProfile.click()
+
+
+    def check_success_message(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.CHECK_SUCCESS_NOTIFICATION)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
 
 
 
@@ -791,6 +838,7 @@ def step_impl(context):
         print("FAILURE: The error message is not displayed.")
 
 
+
 @then("there should be an error message that password is mismatch")
 def step_impl(context):
     password_mismatch_error = context.allSteps.password_mismatch_error()
@@ -798,3 +846,46 @@ def step_impl(context):
         print("SUCCESS: The error message is displayed.")
     else:
         print("FAILURE: The error message is not displayed.")
+
+
+@step("user clicks on edit profile button")
+def step_impl(context):
+    context.allSteps.click_edit_profile()
+
+
+@step("I enter an '{fullname}' to fullname field to edit")
+def step_impl(context, fullname):
+    context.allSteps.input_fullname(fullname)
+
+
+
+@step("I edit email_address_field '{email}'")
+def step_impl(context, email):
+    context.allSteps.input_email(email)
+
+
+@step("I edit phone number field '{phonenumber}'")
+def step_impl(context, phonenumber):
+    context.allSteps.input_phonenumber(phonenumber)
+
+
+@step('the user clicks on the "Update" button')
+def step_impl(context):
+    time.sleep(2)
+    context.allSteps.UpdateProfile_Click()
+
+
+@step("I enter a correct password '{update_password}'")
+def step_impl(context, update_password):
+    context.allSteps.input_update_password(update_password)
+
+
+@step("Check that profile is updated")
+def step_impl(context):
+    success_message = context.allSteps.check_success_message()
+    if success_message.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+

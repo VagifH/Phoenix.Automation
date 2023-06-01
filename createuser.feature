@@ -120,3 +120,4 @@ Feature: User Registration
     And I confirm the 'BAkcell88---'
     And I submit the form
     Then there should be an error message that password is mismatch
+

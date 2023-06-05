@@ -81,8 +81,7 @@ class AllSteps(BasePage):
     PASSWORD_MISMATCH = (By.CSS_SELECTOR,"form .css-z7vtc8:nth-of-type(7) [class='MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1lisuo3']")
 
 
-    #Setting Edit User Pofle
-
+    # Setting Edit User Profile
     EDIT_PROFILE = (By.CSS_SELECTOR,"div[role='tablist'] > button:nth-of-type(2)")
     FULLNAME_EDIT_USERPROFILE = (By.XPATH,"//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue']) [1]")
     EMAIL_ADDRESS_EDIT_USERPROFILE = (By.XPATH,"//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue'])[2]")
@@ -90,6 +89,18 @@ class AllSteps(BasePage):
     PASSWORD_EDITUSER = (By.XPATH,"/html//input[@id='password']")
     CHECK_SUCCESS_NOTIFICATION =(By.XPATH,"/html//div[@id='notistack-snackbar']")
     BLANK_FILED_PASSWORD_ERROR = (By.XPATH,"/html//div[@id='tabpanel-1']//form//p[.='The field is required']")
+    FULLNAME_INVALID_ERROR = (By.CSS_SELECTOR,"div:nth-of-type(1) > .MuiFormHelperText-root.css-170h3rz")
+    EMAIL_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(2) > .MuiFormHelperText-root.css-170h3rz")
+    PHONE_NUMBER_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(3) > .MuiFormHelperText-root.css-170h3rz")
+    PASSWORD_INVALID_ERROR = (By.CSS_SELECTOR, "") #DOBAV CSS SELECTOR SUDAAAAAAAAAA
+
+
+    # Setting Date Format
+    DATE_FORMAT_BUTTON = (By.CSS_SELECTOR,"div[role='tablist'] > button:nth-of-type(4)")
+    CHANGE_DATE_MODE_BUTTON = (By.CSS_SELECTOR,"[type='checkbox']")
+
+
+
 
 
     def driver_refresh(self):
@@ -504,7 +515,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-    # Settings Edt user profile password filed s blank error message
+    # Settings Edt user profile password filed  blank error message
     def check_error_blank_field(self):
         loop_count = 0
         while loop_count < 1:
@@ -516,6 +527,66 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
+
+    # Settings Date format
+    def input_date_format(self):
+        date_format_button = self.driver.find_element(*self.DATE_FORMAT_BUTTON)
+        date_format_button.click()
+
+    # Setting Date mode check box
+    def change_date_mode(self):
+        change_date_mode_button = self.driver.find_element(*self.CHANGE_DATE_MODE_BUTTON)
+        change_date_mode_button.click()
+
+    #Edit User Profile invalid ull name error message
+    def check_error_invalid_full_name(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.FULLNAME_INVALID_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+
+    #Edit user profile Invalid Email error message
+    def check_error_invalid_email(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.EMAIL_INVALID_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+     # Edit user profile Invalid Phone number error message
+    def check_error_invalid_phone_number(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.PHONE_NUMBER_INVALID_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+
+    # Edit user profile Invalid Password error message
+    def check_error_invalid_password(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.PASSWORD_INVALID_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
 
 
 @given("the user is on the login page")
@@ -907,6 +978,52 @@ def step_impl(context):
 def step_impl(context):
     error_blank_field = context.allSteps.check_error_blank_field()
     if error_blank_field.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("I click on the date format element")
+def step_impl(context):
+    context.allSteps.input_date_format()
+
+
+@step("I click on the date option")
+def step_impl(context):
+    context.allSteps.change_date_mode()
+
+
+@step("Check that profile is not updated due to invalid Fullname")
+def step_impl(context):
+    error_invalid_full_name = context.allSteps.check_error_invalid_full_name()
+    if error_invalid_full_name.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("Check that profile is not updated due to invalid email")
+def step_impl(context):
+    error_invalid_email = context.allSteps.check_error_invalid_email()
+    if error_invalid_email.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("Check that profile is not updated due to invalid phone number")
+def step_impl(context):
+    invalid_phone_number = context.allSteps.check_error_invalid_phone_number()
+    if invalid_phone_number.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("Check that profile is not updated due to invalid password")
+def step_impl(context):
+    invalid_password = context.allSteps.check_error_invalid_password()
+    if invalid_password.is_displayed():
         print("SUCCESS: The error message is displayed.")
     else:
         print("FAILURE: The error message is not displayed.")

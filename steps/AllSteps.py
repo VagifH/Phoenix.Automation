@@ -92,15 +92,21 @@ class AllSteps(BasePage):
     FULLNAME_INVALID_ERROR = (By.CSS_SELECTOR,"div:nth-of-type(1) > .MuiFormHelperText-root.css-170h3rz")
     EMAIL_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(2) > .MuiFormHelperText-root.css-170h3rz")
     PHONE_NUMBER_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(3) > .MuiFormHelperText-root.css-170h3rz")
-    PASSWORD_INVALID_ERROR = (By.CSS_SELECTOR, "") #DOBAV CSS SELECTOR SUDAAAAAAAAAA
+    PASSWORD_INVALID_ERROR = (By.CSS_SELECTOR, "div[role='alert']") #DOBAV CSS SELECTOR SUDAAAAAAAAAA
 
 
     # Setting Date Format
     DATE_FORMAT_BUTTON = (By.CSS_SELECTOR,"div[role='tablist'] > button:nth-of-type(4)")
     CHANGE_DATE_MODE_BUTTON = (By.CSS_SELECTOR,"[type='checkbox']")
 
-
-
+    # Setting Units of measure
+    UNITS_OF_MEASURE_BUTTON = (By.CSS_SELECTOR,"[class='MuiTabs-scroller MuiTabs-fixed css-1anid1y'] [tabindex='0']")
+    UNITS_DROP_DOWN_LIST = (By.CSS_SELECTOR,"div:nth-of-type(1) > .MuiFormControl-fullWidth.MuiFormControl-root.css-tzsjye > .MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-root.MuiOutlinedInput-root.css-7m3ogm > div[role='button']")
+    SELECT_DEGC = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
+    PRESSURE_UNITS_OF_MEASURE_DROPDOWN = (By.CSS_SELECTOR,"div:nth-of-type(2) > .MuiFormControl-fullWidth.MuiFormControl-root.css-tzsjye > .MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-root.MuiOutlinedInput-root.css-7m3ogm > div[role='button']")
+    SELECT_BAR = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
+    RATES_UNITS_OF_MEASURE_DROPDOWN = (By.CSS_SELECTOR,"div:nth-of-type(9) div[role='button']")
+    SELECT_CPS = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
 
 
     def driver_refresh(self):
@@ -212,7 +218,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-        # Edit user profile > Incorrect email address
+    # Edit user profile > Incorrect email address
 
     def check_email_address_error_message(self):
         loop_count = 0
@@ -538,20 +544,21 @@ class AllSteps(BasePage):
         change_date_mode_button = self.driver.find_element(*self.CHANGE_DATE_MODE_BUTTON)
         change_date_mode_button.click()
 
-    #Edit User Profile invalid ull name error message
+    # Edit User Profile invalid ull name error message
     def check_error_invalid_full_name(self):
+        global web_element
         loop_count = 0
         while loop_count < 1:
             try:
                 web_element = self.driver.find_element(*self.FULLNAME_INVALID_ERROR)
-                return web_element
+                assert False
             except WebDriverException:
                 pass
             loop_count += 1
-        assert False
+        return web_element
 
 
-    #Edit user profile Invalid Email error message
+    # Edit user profile Invalid Email error message
     def check_error_invalid_email(self):
         loop_count = 0
         while loop_count < 1:
@@ -587,6 +594,46 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
+
+    # Settings Temperature Units of Measure button
+    def measure_units_button(self):
+        measure_units_button = self.driver.find_element(*self.UNITS_OF_MEASURE_BUTTON)
+        measure_units_button.click()
+
+    # Settings /Temperature First drop down click
+    def units_dropdown_list(self):
+        units_dropdown_list = self.driver.find_element(*self.UNITS_DROP_DOWN_LIST)
+        units_dropdown_list.click()
+
+
+    # Settings DEGC selection
+    def select_DEGC(self):
+        select_DEGC = self.driver.find_element(*self.SELECT_DEGC)
+        select_DEGC.click()
+
+
+    # Settings Pressure drop down list
+    def pressure_measure_units_dropdown(self):
+        pressure_measure_units_dropdown = self.driver.find_element(*self.PRESSURE_UNITS_OF_MEASURE_DROPDOWN)
+        pressure_measure_units_dropdown.click()
+
+    # Settings PRESSURE DROP DOWN LIST CLICK SELECT BAR
+    def select_BAR(self):
+        select_BAR = self.driver.find_element(*self.SELECT_BAR)
+        select_BAR.click()
+
+     #Settings RATES DROP DOWN LIST
+    def rates_measure_units_dropdown(self):
+        rates_measure_units_dropdown = self.driver.find_element(*self.RATES_UNITS_OF_MEASURE_DROPDOWN)
+        rates_measure_units_dropdown.click()
+
+
+    # Settings Rates drop down list / Click and select CPS
+    def select_CPS(self):
+        select_CPS = self.driver.find_element(*self.SELECT_CPS)
+        select_CPS.click()
+
+
 
 
 @given("the user is on the login page")
@@ -1027,3 +1074,39 @@ def step_impl(context):
         print("SUCCESS: The error message is displayed.")
     else:
         print("FAILURE: The error message is not displayed.")
+
+
+@step("I click on units of measure option")
+def step_impl(context):
+    context.allSteps.measure_units_button()
+
+
+@step("I click on dropdown list")
+def step_impl(context):
+    context.allSteps.units_dropdown_list()
+
+
+@step("I select DEGC")
+def step_impl(context):
+    context.allSteps.select_DEGC()
+
+
+
+@step("I click on Pressure units of measure drop down list")
+def step_impl(context):
+    context.allSteps.pressure_measure_units_dropdown()
+
+
+@step("I select BAR")
+def step_impl(context):
+    context.allSteps.select_BAR()
+
+
+@step("I click on Rates units of measure drop down list")
+def step_impl(context):
+    context.allSteps.rates_measure_units_dropdown()
+
+
+@step("I select CPS")
+def step_impl(context):
+    context.allSteps.select_CPS()

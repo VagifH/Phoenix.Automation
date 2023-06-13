@@ -19,8 +19,7 @@ class AllSteps(BasePage):
     # Setting edit profile element info
     ACTION_BTN = (By.XPATH, "(//button[@data-testid='editUser'])[1]")
     EMAIL_SELECTOR = (By.XPATH, "(//input[@class='MuiInputBase-input MuiOutlinedInput-input css-j6vbi8'])[2]")
-    UPDATE_PROFILE = (By.XPATH,
-                      "(//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-1prp8n9'])[1]")
+    UPDATE_PROFILE = (By.XPATH,"//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-1prp8n9'])[1]")
 
     FULLNAME_SELECTOR = (By.CSS_SELECTOR,
                          'div:nth-of-type(1) > .MuiFormControl-root.MuiTextField-root.css-i44wyl  .MuiInputBase-input.MuiOutlinedInput-input.css-j6vbi8')
@@ -109,6 +108,20 @@ class AllSteps(BasePage):
     SELECT_CPS = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
 
 
+    # Roles page
+
+    ROLES_PAGE_ICON = (By.CSS_SELECTOR,"[href='\/dashboard\/roles'] [tabindex]")
+    FIRST_ACTION_BTN = (By.XPATH,"//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-7hs5rr'][1]")
+    AUTH_PROFILE_READ_TOOGLE =(By.CSS_SELECTOR,"form > div:nth-of-type(2) [type]")
+    AUTH_PROFILE_MANAGER_TOOGLE =(By.CSS_SELECTOR,"form div:nth-of-type(3) [type]")
+    RENDER_ENGINE_READ_SELECTOR = (By.CSS_SELECTOR,"form [class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-3nargb']:nth-child(9) [class='MuiInputBase-input MuiInput-input MuiInputBase-inputSizeSmall css-1do9oaf']")
+    RENDER_ENGINE_WRITE_SELECTOR = (By.CSS_SELECTOR,"form [class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-3nargb']:nth-child(11) [class='MuiInputBase-input MuiInput-input MuiInputBase-inputSizeSmall css-1do9oaf']")
+    ROLE_UPDATE_BUTTON = (By.CSS_SELECTOR,".MuiBox-root [tabindex]")
+    SUCCESSFULL_ROLE_UPDATE_MESSAGE = (By.CSS_SELECTOR,"#notistack-snackbar")
+
+
+
+
     def driver_refresh(self):
         self.driver.refresh()
 
@@ -151,6 +164,7 @@ class AllSteps(BasePage):
     def click_action_btn(self):
         action_button = self.driver.find_element(*self.ACTION_BTN)
         action_button.click()
+
 
     def loginInSite(self, username, password):
         self.input_username(username)
@@ -634,6 +648,70 @@ class AllSteps(BasePage):
         select_CPS.click()
 
 
+    # Roles page button
+    def roles_page_icon(self):
+        roles_page_icon = self.driver.find_element(*self.ROLES_PAGE_ICON)
+        roles_page_icon.click()
+
+
+    # Roles/ First action button in the list
+    def click_first_action_btn(self):
+        click_first_action_btn = self.driver.find_element(*self.FIRST_ACTION_BTN)
+        click_first_action_btn.click()
+
+    #Auth Profile read toggle
+    def click_auth_profile_read(self):
+        click_auth_profile_read = self.driver.find_element(*self.AUTH_PROFILE_READ_TOOGLE)
+        click_auth_profile_read.click()
+
+
+    #Auth Profile Manager
+    def click_auth_profile_manager(self):
+        click_auth_profile_manager = self.driver.find_element(*self.AUTH_PROFILE_MANAGER_TOOGLE)
+        click_auth_profile_manager.click()
+
+
+
+    #Render Engine Read input
+    def input_render_engine_read(self, render_engine_read):
+        render_engine_read_input = self.driver.find_element(*self.RENDER_ENGINE_READ_SELECTOR)
+        render_engine_read_input.clear()
+        render_engine_read_input.send_keys(Keys.CONTROL, 'a')
+        time.sleep(3)
+        render_engine_read_input.send_keys(Keys.BACKSPACE)
+        render_engine_read_input.send_keys(render_engine_read)
+
+
+
+    #Render Engine Read input
+    def input_render_engine_write(self, render_engine_write):
+        render_engine_write_input = self.driver.find_element(*self.RENDER_ENGINE_WRITE_SELECTOR)
+        render_engine_write_input.clear()
+        render_engine_write_input.send_keys(Keys.CONTROL, 'a')
+        time.sleep(3)
+        render_engine_write_input.send_keys(Keys.BACKSPACE)
+        render_engine_write_input.send_keys(render_engine_write)
+
+
+    #Role page Update button
+    def click_role_update(self):
+        click_update = self.driver.find_element(*self.ROLE_UPDATE_BUTTON)
+        click_update.click()
+
+
+    #Role update pop up successfull message
+    def check_role_updated_message(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.SUCCESSFULL_ROLE_UPDATE_MESSAGE)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+
 
 
 @given("the user is on the login page")
@@ -670,7 +748,7 @@ def step_impl(context):
 
 @then("the user should be redirected to the homepage")
 def step_impl(context):
-    time.sleep(3)
+    time.sleep(1)
     url = 'https://rpi.local/dashboard/users'
 
     if context.browser.get_current_url() == url:
@@ -686,7 +764,6 @@ def step_impl(context, email):
 
 @step('the user clicks on the "Save" button')
 def step_impl(context):
-    time.sleep(3)
     context.allSteps.UpdateProfile_Click()
 
 
@@ -1110,3 +1187,50 @@ def step_impl(context):
 @step("I select CPS")
 def step_impl(context):
     context.allSteps.select_CPS()
+
+
+@step("Click on Roles page")
+def step_impl(context):
+    context.allSteps.roles_page_icon()
+    time.sleep(4)
+
+
+@when("Click on first user in the list")
+def step_impl(context):
+    context.allSteps.click_first_action_btn()
+    time.sleep(3)
+
+
+@step("Click on Auth Profile Read to turn on/off")
+def step_impl(context):
+    context.allSteps.click_auth_profile_read()
+
+
+@step("I click on Auth Profile manager to turn on/off")
+def step_impl(context):
+    context.allSteps.click_auth_profile_manager()
+    time.sleep(5)
+
+
+@step("Click and edit '{render_engine_read}' App Render Engine read")
+def step_impl(context,render_engine_read):
+    context.allSteps.input_render_engine_read(render_engine_read)
+
+
+@step("Click and edit '{render_engine_write}' App Render Engine write")
+def step_impl(context,render_engine_write):
+    context.allSteps.input_render_engine_write(render_engine_write)
+
+
+@step("Click on Update button")
+def step_impl(context):
+    context.allSteps.click_role_update()
+
+
+@then("Verify that successfull pop message is displayed")
+def step_impl(context):
+    role_updated_message = context.allSteps.check_role_updated_message()
+    if role_updated_message.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")

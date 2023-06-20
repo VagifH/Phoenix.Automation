@@ -19,7 +19,8 @@ class AllSteps(BasePage):
     # Setting edit profile element info
     ACTION_BTN = (By.XPATH, "(//button[@data-testid='editUser'])[1]")
     EMAIL_SELECTOR = (By.XPATH, "(//input[@class='MuiInputBase-input MuiOutlinedInput-input css-j6vbi8'])[2]")
-    UPDATE_PROFILE = (By.XPATH,"//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-1prp8n9'])[1]")
+    UPDATE_PROFILE = (By.XPATH,
+                      "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-1prp8n9'])[1]")
 
     FULLNAME_SELECTOR = (By.CSS_SELECTOR,
                          'div:nth-of-type(1) > .MuiFormControl-root.MuiTextField-root.css-i44wyl  .MuiInputBase-input.MuiOutlinedInput-input.css-j6vbi8')
@@ -73,51 +74,79 @@ class AllSteps(BasePage):
     ROLE_IS_NOT_SELECTED_ERROR = (By.XPATH,
                                   "/html//div[@id='root']/div[@class='css-qvls4e']/div[@class='MuiBox-root css-ajnmy4']/div[@class='MuiBox-root css-erhn22']//form/div[3]/div[@class='MuiFormControl-root css-13sljp9']/p[.='The field is required']")
 
-    INCORRECT_EMAIL = (By.XPATH, "/html//div[@id='root']/div[@class='css-qvls4e']/div[@class='MuiBox-root css-ajnmy4']//form/div[4]/div[@class='MuiFormControl-root MuiTextField-root css-i44wyl']//input")
-    INVALID_USERNAME_ERROR = (By.XPATH,"//div[2]/div[contains(@class, 'MuiFormControl-root') and contains(@class, 'MuiTextField-root')]""/descendant::input[contains(@class, 'MuiInputBase-input') and contains(@class, 'MuiOutlinedInput-input')]")
-    INVALID_FULLNAME_ERROR = (By.CSS_SELECTOR,"form .css-z7vtc8:nth-of-type(1) p")
-    INVALID_PHONE_NUMBER_ERROR = (By.CSS_SELECTOR,"form .css-z7vtc8:nth-of-type(5) p")
-    PASSWORD_MISMATCH = (By.CSS_SELECTOR,"form .css-z7vtc8:nth-of-type(7) [class='MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1lisuo3']")
-
+    INCORRECT_EMAIL = (By.XPATH,
+                       "/html//div[@id='root']/div[@class='css-qvls4e']/div[@class='MuiBox-root css-ajnmy4']//form/div[4]/div[@class='MuiFormControl-root MuiTextField-root css-i44wyl']//input")
+    INVALID_USERNAME_ERROR = (By.XPATH,
+                              "//div[2]/div[contains(@class, 'MuiFormControl-root') and contains(@class, 'MuiTextField-root')]""/descendant::input[contains(@class, 'MuiInputBase-input') and contains(@class, 'MuiOutlinedInput-input')]")
+    INVALID_FULLNAME_ERROR = (By.CSS_SELECTOR, "form .css-z7vtc8:nth-of-type(1) p")
+    INVALID_PHONE_NUMBER_ERROR = (By.CSS_SELECTOR, "form .css-z7vtc8:nth-of-type(5) p")
+    PASSWORD_MISMATCH = (By.CSS_SELECTOR,
+                         "form .css-z7vtc8:nth-of-type(7) [class='MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1lisuo3']")
 
     # Setting Edit User Profile
-    EDIT_PROFILE = (By.CSS_SELECTOR,"div[role='tablist'] > button:nth-of-type(2)")
-    FULLNAME_EDIT_USERPROFILE = (By.XPATH,"//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue']) [1]")
-    EMAIL_ADDRESS_EDIT_USERPROFILE = (By.XPATH,"//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue'])[2]")
-    UPDATE_PROFILE_BUTTON = (By.XPATH,"/html//div[@id='tabpanel-1']//form/div[@class='MuiBox-root css-16332ei']/button[@type='button']")
-    PASSWORD_EDITUSER = (By.XPATH,"/html//input[@id='password']")
-    CHECK_SUCCESS_NOTIFICATION =(By.XPATH,"/html//div[@id='notistack-snackbar']")
-    BLANK_FILED_PASSWORD_ERROR = (By.XPATH,"/html//div[@id='tabpanel-1']//form//p[.='The field is required']")
-    FULLNAME_INVALID_ERROR = (By.CSS_SELECTOR,"div:nth-of-type(1) > .MuiFormHelperText-root.css-170h3rz")
+    EDIT_PROFILE = (By.CSS_SELECTOR, "div[role='tablist'] > button:nth-of-type(2)")
+    FULLNAME_EDIT_USERPROFILE = (By.XPATH,
+                                 "//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue']) [1]")
+    EMAIL_ADDRESS_EDIT_USERPROFILE = (By.XPATH,
+                                      "//div[@class = 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bqrfue'])[2]")
+    UPDATE_PROFILE_BUTTON = (
+    By.XPATH, "/html//div[@id='tabpanel-1']//form/div[@class='MuiBox-root css-16332ei']/button[@type='button']")
+    PASSWORD_EDITUSER = (By.XPATH, "/html//input[@id='password']")
+    CHECK_SUCCESS_NOTIFICATION = (By.XPATH, "/html//div[@id='notistack-snackbar']")
+    BLANK_FILED_PASSWORD_ERROR = (By.XPATH, "/html//div[@id='tabpanel-1']//form//p[.='The field is required']")
+    FULLNAME_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(1) > .MuiFormHelperText-root.css-170h3rz")
     EMAIL_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(2) > .MuiFormHelperText-root.css-170h3rz")
     PHONE_NUMBER_INVALID_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(3) > .MuiFormHelperText-root.css-170h3rz")
-    PASSWORD_INVALID_ERROR = (By.CSS_SELECTOR, "div[role='alert']") #DOBAV CSS SELECTOR SUDAAAAAAAAAA
-
+    PASSWORD_INVALID_ERROR = (By.CSS_SELECTOR, "div[role='alert']")  # DOBAV CSS SELECTOR SUDAAAAAAAAAA
 
     # Setting Date Format
-    DATE_FORMAT_BUTTON = (By.CSS_SELECTOR,"div[role='tablist'] > button:nth-of-type(4)")
-    CHANGE_DATE_MODE_BUTTON = (By.CSS_SELECTOR,"[type='checkbox']")
+    DATE_FORMAT_BUTTON = (By.CSS_SELECTOR, "div[role='tablist'] > button:nth-of-type(4)")
+    CHANGE_DATE_MODE_BUTTON = (By.CSS_SELECTOR, "[type='checkbox']")
 
     # Setting Units of measure
-    UNITS_OF_MEASURE_BUTTON = (By.CSS_SELECTOR,"[class='MuiTabs-scroller MuiTabs-fixed css-1anid1y'] [tabindex='0']")
-    UNITS_DROP_DOWN_LIST = (By.CSS_SELECTOR,"div:nth-of-type(1) > .MuiFormControl-fullWidth.MuiFormControl-root.css-tzsjye > .MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-root.MuiOutlinedInput-root.css-7m3ogm > div[role='button']")
-    SELECT_DEGC = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
-    PRESSURE_UNITS_OF_MEASURE_DROPDOWN = (By.CSS_SELECTOR,"div:nth-of-type(2) > .MuiFormControl-fullWidth.MuiFormControl-root.css-tzsjye > .MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-root.MuiOutlinedInput-root.css-7m3ogm > div[role='button']")
-    SELECT_BAR = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
-    RATES_UNITS_OF_MEASURE_DROPDOWN = (By.CSS_SELECTOR,"div:nth-of-type(9) div[role='button']")
-    SELECT_CPS = (By.CSS_SELECTOR,"ul > li:nth-of-type(2)")
-
+    UNITS_OF_MEASURE_BUTTON = (By.CSS_SELECTOR, "[class='MuiTabs-scroller MuiTabs-fixed css-1anid1y'] [tabindex='0']")
+    UNITS_DROP_DOWN_LIST = (By.CSS_SELECTOR,
+                            "div:nth-of-type(1) > .MuiFormControl-fullWidth.MuiFormControl-root.css-tzsjye > .MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-root.MuiOutlinedInput-root.css-7m3ogm > div[role='button']")
+    SELECT_DEGC = (By.CSS_SELECTOR, "ul > li:nth-of-type(2)")
+    PRESSURE_UNITS_OF_MEASURE_DROPDOWN = (By.CSS_SELECTOR,
+                                          "div:nth-of-type(2) > .MuiFormControl-fullWidth.MuiFormControl-root.css-tzsjye > .MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-root.MuiOutlinedInput-root.css-7m3ogm > div[role='button']")
+    SELECT_BAR = (By.CSS_SELECTOR, "ul > li:nth-of-type(2)")
+    RATES_UNITS_OF_MEASURE_DROPDOWN = (By.CSS_SELECTOR, "div:nth-of-type(9) div[role='button']")
+    SELECT_CPS = (By.CSS_SELECTOR, "ul > li:nth-of-type(2)")
 
     # Roles page
 
-    ROLES_PAGE_ICON = (By.CSS_SELECTOR,"[href='\/dashboard\/roles'] [tabindex]")
-    FIRST_ACTION_BTN = (By.XPATH,"//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-7hs5rr'][1]")
-    AUTH_PROFILE_READ_TOOGLE =(By.CSS_SELECTOR,"form > div:nth-of-type(2) [type]")
-    AUTH_PROFILE_MANAGER_TOOGLE =(By.CSS_SELECTOR,"form div:nth-of-type(3) [type]")
-    RENDER_ENGINE_READ_SELECTOR = (By.CSS_SELECTOR,"form [class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-3nargb']:nth-child(9) [class='MuiInputBase-input MuiInput-input MuiInputBase-inputSizeSmall css-1do9oaf']")
-    RENDER_ENGINE_WRITE_SELECTOR = (By.CSS_SELECTOR,"form [class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-3nargb']:nth-child(11) [class='MuiInputBase-input MuiInput-input MuiInputBase-inputSizeSmall css-1do9oaf']")
-    ROLE_UPDATE_BUTTON = (By.CSS_SELECTOR,".MuiBox-root [tabindex]")
-    SUCCESSFULL_ROLE_UPDATE_MESSAGE = (By.CSS_SELECTOR,"#notistack-snackbar")
+    ROLES_PAGE_ICON = (By.CSS_SELECTOR, "[href='\/dashboard\/roles'] [tabindex]")
+    FIRST_ACTION_BTN = (
+    By.XPATH, "//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-7hs5rr'][1]")
+    AUTH_PROFILE_READ_TOOGLE = (By.CSS_SELECTOR, "form > div:nth-of-type(2) [type]")
+    AUTH_PROFILE_MANAGER_TOOGLE = (By.CSS_SELECTOR, "form div:nth-of-type(3) [type]")
+    RENDER_ENGINE_READ_SELECTOR = (By.CSS_SELECTOR,
+                                   "form [class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-3nargb']:nth-child(9) [class='MuiInputBase-input MuiInput-input MuiInputBase-inputSizeSmall css-1do9oaf']")
+    RENDER_ENGINE_WRITE_SELECTOR = (By.CSS_SELECTOR,
+                                    "form [class='MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-3nargb']:nth-child(11) [class='MuiInputBase-input MuiInput-input MuiInputBase-inputSizeSmall css-1do9oaf']")
+    ROLE_UPDATE_BUTTON = (By.CSS_SELECTOR, ".MuiBox-root [tabindex]")
+    SUCCESSFULL_ROLE_UPDATE_MESSAGE = (By.CSS_SELECTOR, "#notistack-snackbar")
+
+    # Server config page
+    SERVER_CONFIG_BUTTON = (By.CSS_SELECTOR, "[href='\/dashboard\/server_config'] [tabindex]")
+    ETHERNET_SERIAL_TOGGLE = (By.CSS_SELECTOR,
+                              ".MuiButtonBase-root.MuiSwitch-colorPrimary.MuiSwitch-switchBase.PrivateSwitchBase-root.css-15usc2f > .MuiSwitch-input.PrivateSwitchBase-input.css-1m9pwf3")
+    UPDATE_SERVER_CONFIG_PAGE = (By.CSS_SELECTOR, "[class='MuiBox-root css-16332ei'] [tabindex]")
+    SERVER_CONFIG_UPDATE_MESSAGE = (By.CSS_SELECTOR, "div#notistack-snackbar")
+    CS_COMMUNICATION_TOGGLE = (By.CSS_SELECTOR,
+                               ".Mui-checked.MuiButtonBase-root.MuiSwitch-colorPrimary.MuiSwitch-switchBase.PrivateSwitchBase-root.css-15usc2f > .MuiSwitch-input.PrivateSwitchBase-input.css-1m9pwf3")
+    IP_ADDRESS_SELECTOR = (By.CSS_SELECTOR, "[placeholder]")
+    IP_ADDRESS_WRONG_ERROR = (By.CSS_SELECTOR, "form .css-z7vtc8:nth-of-type(1) p")
+    IP_ADDRESS_BLANK_ERROR = (By.CSS_SELECTOR, "form .css-z7vtc8:nth-of-type(1) p")
+    PORT_SELECTOR = (By.CSS_SELECTOR,
+                     "div:nth-of-type(2) > div > div:nth-of-type(2) > .MuiFormControl-root.MuiTextField-root.css-i44wyl  .MuiInputBase-input.MuiOutlinedInput-input.css-j6vbi8")
+    PORT_ERROR_MESSAGE = (
+    By.CSS_SELECTOR, "div:nth-of-type(2) > div > div:nth-of-type(2) > .MuiFormHelperText-root.css-170h3rz")
+    PORT_BLANK_ERROR = (By.CSS_SELECTOR, "div:nth-of-type(2) > div > div:nth-of-type(2) > .MuiFormHelperText-root.css-170h3rz")
+    SERIAL_PORT_SELECTOR = (By.CSS_SELECTOR,"div:nth-of-type(3) > div > .MuiBox-root.css-z7vtc8 > .MuiFormControl-root.MuiTextField-root.css-i44wyl  .MuiInputBase-input.MuiOutlinedInput-input.css-j6vbi8")
+    SERIAL_PORT_ERROR_MESSAGE = (By.CSS_SELECTOR,"div:nth-of-type(3) > div > .MuiBox-root.css-z7vtc8 > .MuiFormHelperText-root.css-170h3rz")
+    SERIAL_PORT_BLANK_ERROR = (By.CSS_SELECTOR,"div:nth-of-type(3) > div > .MuiBox-root.css-z7vtc8 > .MuiFormHelperText-root.css-170h3rz")
 
 
 
@@ -129,21 +158,17 @@ class AllSteps(BasePage):
         clockmode_button = self.driver.find_element(*self.CLOCKMODE_BUTTON)
         clockmode_button.click()
 
-
     def user_menu_icon(self):
         user_menu_icon = self.driver.find_element(*self.USERMENU_ICON)
         user_menu_icon.click()
-
 
     def change_clock_mode(self):
         change_clockmode_button = self.driver.find_element(*self.CHANGE_CLOCKMODE_BUTTON)
         change_clockmode_button.click()
 
-
     def input_setting_mode(self):
         setting_button = self.driver.find_element(*self.SETTING_BUTTON)
         setting_button.click()
-
 
     def input_username(self, username):
         username_input = self.driver.find_element(*self.USERNAME_SELECTOR)
@@ -164,7 +189,6 @@ class AllSteps(BasePage):
     def click_action_btn(self):
         action_button = self.driver.find_element(*self.ACTION_BTN)
         action_button.click()
-
 
     def loginInSite(self, username, password):
         self.input_username(username)
@@ -196,9 +220,6 @@ class AllSteps(BasePage):
         fullname_input.send_keys(Keys.CONTROL, 'a')
         fullname_input.send_keys(Keys.BACKSPACE)
         fullname_input.send_keys(fullname)
-
-
-
 
     def input_phonenumber(self, phonenumber):
         phonenumber_input = self.driver.find_element(*self.PHONENUMBER_SELECTOR)
@@ -274,11 +295,9 @@ class AllSteps(BasePage):
         timezone_dropdown_button = self.driver.find_element(*self.TIMEZONE_DROPDOWN_BUTTON)
         timezone_dropdown_button.click()
 
-
     def timezone_button(self):
         timezone_button = self.driver.find_element(*self.TIMEZONE_BUTTON)
         timezone_button.click()
-
 
     def select_panama_in_dropdown_list(self):
         select_panama_in_dropdown_list = self.driver.find_element(*self.AMERICA_PANAMA_DROPDOWN_LIST)
@@ -302,7 +321,6 @@ class AllSteps(BasePage):
         change_password_button = self.driver.find_element(*self.CHANGE_PASSWORD_BUTTON)
         change_password_button.click()
 
-
     def current_password(self, current_password):
         current_password_input = self.driver.find_element(*self.CURRENT_PASSWORD)
         current_password_input.send_keys(current_password)
@@ -319,7 +337,6 @@ class AllSteps(BasePage):
         update_button = self.driver.find_element(*self.UPDATE_BUTTON)
         update_button.click()
 
-
     # Change password successful notification
     def password_changed_notification(self):
         loop_count = 0
@@ -332,8 +349,6 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-
-
     # Change password alert notification about confirm password is not the same
     def password_changed_alert_notification(self):
         loop_count = 0
@@ -345,8 +360,6 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
-
-
 
     # Change password alert notification about weak password
     def alert_notification_week_password(self):
@@ -364,7 +377,6 @@ class AllSteps(BasePage):
     def create_user_button(self):
         create_user_button = self.driver.find_element(*self.CREATE_USER_BUTTON)
         create_user_button.click()
-
 
     # Create New User_ Fullname
     def full_name(self, full_name):
@@ -402,16 +414,13 @@ class AllSteps(BasePage):
         set_password_input = self.driver.find_element(*self.PASSWORD_FIELD)
         set_password_input.send_keys(set_password)
 
-
     def set_confirm_password(self, set_confirm_password):
         set_confirm_password_input = self.driver.find_element(*self.CONFIRM_PASSWORD_FIELD)
         set_confirm_password_input.send_keys(set_confirm_password)
 
-
     def submit_button(self):
         submit_button = self.driver.find_element(*self.SUBMIT_BUTTON)
         submit_button.click()
-
 
     # Create User Role is not Selected error
     def role_is_not_selected_error(self):
@@ -425,8 +434,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-
-     # Create User incorrect_email_error
+    # Create User incorrect_email_error
     def incorrect_email_error(self):
         loop_count = 0
         while loop_count < 1:
@@ -437,7 +445,6 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
-
 
     # Create User invalid_username_error
     def invalid_username_error(self):
@@ -451,8 +458,6 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-
-
     # Create User invalid_fullname_error
     def invalid_fullname_error(self):
         loop_count = 0
@@ -464,8 +469,6 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
-
-
 
     # Create User invalid_phone_number_error  password_mismatch_error
     def invalid_phone_number_error(self):
@@ -479,8 +482,6 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-
-
     # Create User password_mismatch_error
     def password_mismatch_error(self):
         loop_count = 0
@@ -493,17 +494,12 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-
-
-    #Settngs_Edit User Profile
+    # Settngs_Edit User Profile
     def click_edit_profile(self):
         click_edit_profile = self.driver.find_element(*self.EDIT_PROFILE)
         click_edit_profile.click()
 
-
-
-
-    #Settings_emal_adress
+    # Settings_emal_adress
     def input_email_address(self, email__address):
         email__address_input = self.driver.find_element(*self.EMAIL_ADDRESS_EDIT_USERPROFILE)
         email__address_input.clear()
@@ -516,12 +512,10 @@ class AllSteps(BasePage):
         update_password_input = self.driver.find_element(*self.PASSWORD_EDITUSER)
         update_password_input.send_keys(password)
 
-
     # Settings_Update Button
     def UpdateProfile_Click(self):
         UpdateProfile = self.driver.find_element(*self.UPDATE_PROFILE_BUTTON)
         UpdateProfile.click()
-
 
     # Settng Edt user profile success message
     def check_success_message(self):
@@ -547,7 +541,6 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-
     # Settings Date format
     def input_date_format(self):
         date_format_button = self.driver.find_element(*self.DATE_FORMAT_BUTTON)
@@ -571,7 +564,6 @@ class AllSteps(BasePage):
             loop_count += 1
         return web_element
 
-
     # Edit user profile Invalid Email error message
     def check_error_invalid_email(self):
         loop_count = 0
@@ -584,7 +576,7 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
-     # Edit user profile Invalid Phone number error message
+    # Edit user profile Invalid Phone number error message
     def check_error_invalid_phone_number(self):
         loop_count = 0
         while loop_count < 1:
@@ -595,7 +587,6 @@ class AllSteps(BasePage):
                 pass
             loop_count += 1
         assert False
-
 
     # Edit user profile Invalid Password error message
     def check_error_invalid_password(self):
@@ -619,12 +610,10 @@ class AllSteps(BasePage):
         units_dropdown_list = self.driver.find_element(*self.UNITS_DROP_DOWN_LIST)
         units_dropdown_list.click()
 
-
     # Settings DEGC selection
     def select_DEGC(self):
         select_DEGC = self.driver.find_element(*self.SELECT_DEGC)
         select_DEGC.click()
-
 
     # Settings Pressure drop down list
     def pressure_measure_units_dropdown(self):
@@ -636,43 +625,37 @@ class AllSteps(BasePage):
         select_BAR = self.driver.find_element(*self.SELECT_BAR)
         select_BAR.click()
 
-     #Settings RATES DROP DOWN LIST
+    # Settings RATES DROP DOWN LIST
     def rates_measure_units_dropdown(self):
         rates_measure_units_dropdown = self.driver.find_element(*self.RATES_UNITS_OF_MEASURE_DROPDOWN)
         rates_measure_units_dropdown.click()
-
 
     # Settings Rates drop down list / Click and select CPS
     def select_CPS(self):
         select_CPS = self.driver.find_element(*self.SELECT_CPS)
         select_CPS.click()
 
-
     # Roles page button
     def roles_page_icon(self):
         roles_page_icon = self.driver.find_element(*self.ROLES_PAGE_ICON)
         roles_page_icon.click()
-
 
     # Roles/ First action button in the list
     def click_first_action_btn(self):
         click_first_action_btn = self.driver.find_element(*self.FIRST_ACTION_BTN)
         click_first_action_btn.click()
 
-    #Auth Profile read toggle
+    # Auth Profile read toggle
     def click_auth_profile_read(self):
         click_auth_profile_read = self.driver.find_element(*self.AUTH_PROFILE_READ_TOOGLE)
         click_auth_profile_read.click()
 
-
-    #Auth Profile Manager
+    # Auth Profile Manager
     def click_auth_profile_manager(self):
         click_auth_profile_manager = self.driver.find_element(*self.AUTH_PROFILE_MANAGER_TOOGLE)
         click_auth_profile_manager.click()
 
-
-
-    #Render Engine Read input
+    # Render Engine Read input
     def input_render_engine_read(self, render_engine_read):
         render_engine_read_input = self.driver.find_element(*self.RENDER_ENGINE_READ_SELECTOR)
         render_engine_read_input.clear()
@@ -681,9 +664,7 @@ class AllSteps(BasePage):
         render_engine_read_input.send_keys(Keys.BACKSPACE)
         render_engine_read_input.send_keys(render_engine_read)
 
-
-
-    #Render Engine Read input
+    # Render Engine Read input
     def input_render_engine_write(self, render_engine_write):
         render_engine_write_input = self.driver.find_element(*self.RENDER_ENGINE_WRITE_SELECTOR)
         render_engine_write_input.clear()
@@ -692,14 +673,12 @@ class AllSteps(BasePage):
         render_engine_write_input.send_keys(Keys.BACKSPACE)
         render_engine_write_input.send_keys(render_engine_write)
 
-
-    #Role page Update button
+    # Role page Update button
     def click_role_update(self):
         click_update = self.driver.find_element(*self.ROLE_UPDATE_BUTTON)
         click_update.click()
 
-
-    #Role update pop up successfull message
+    # Role update pop up successfull message
     def check_role_updated_message(self):
         loop_count = 0
         while loop_count < 1:
@@ -711,6 +690,179 @@ class AllSteps(BasePage):
             loop_count += 1
         assert False
 
+    # Server config button
+    def click_server_config(self):
+        server_config = self.driver.find_element(*self.SERVER_CONFIG_BUTTON)
+        server_config.click()
+
+    # Server config page / Ethernet serial toggle
+    def ethernet_serial_toggle(self):
+        ethernet_serial_toggle = self.driver.find_element(*self.ETHERNET_SERIAL_TOGGLE)
+        ethernet_serial_toggle.click()
+
+    # Server config page / Update button
+    def update_server_config(self):
+        update_button = self.driver.find_element(*self.UPDATE_SERVER_CONFIG_PAGE)
+        update_button.click()
+
+    # Server config page / Update message
+    def check_server_config_updated_message(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.SERVER_CONFIG_UPDATE_MESSAGE)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+        # Server config page / Log_Cs_Communication_Messages_toggle
+
+    def click_Log_Cs_Communication_Messages_toggle(self):
+        Log_Cs_Communication_Messages_toggle = self.driver.find_element(*self.CS_COMMUNICATION_TOGGLE)
+        Log_Cs_Communication_Messages_toggle.click()
+
+    # Server config page / IP Address filed
+    def input_ip_address(self, ip_address):
+        ip_address_input = self.driver.find_element(*self.IP_ADDRESS_SELECTOR)
+        ip_address_input.clear()
+        time.sleep(3)
+        ip_address_input.send_keys(Keys.CONTROL, 'a')
+        ip_address_input.send_keys(Keys.BACKSPACE)
+        ip_address_input.send_keys(ip_address)
+
+    # Server config / IP Address wrong ERROR message
+    def check_ip_address_wrong_error(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.IP_ADDRESS_WRONG_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+        # Server config page / IP Address filed BLANK
+
+    def input_ip_address_blank(self, ip_address):
+        ip_address_blank_input = self.driver.find_element(*self.IP_ADDRESS_SELECTOR)
+        ip_address_blank_input.clear()
+        time.sleep(3)
+        ip_address_blank_input.send_keys(Keys.CONTROL, 'a')
+        ip_address_blank_input.send_keys(Keys.BACKSPACE)
+        ip_address_blank_input.send_keys(ip_address)
+
+        # Server config / IP Address BLANK FILED ERROR message
+
+    def check_ip_address_blank_error(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.IP_ADDRESS_BLANK_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+        # Server config page / Port Address filed
+
+    def input_port(self, port):
+        port_input = self.driver.find_element(*self.PORT_SELECTOR)
+        port_input.clear()
+        time.sleep(3)
+        port_input.send_keys(Keys.CONTROL, 'a')
+        port_input.send_keys(Keys.BACKSPACE)
+        port_input.send_keys(port)
+
+        # Server config page / Verify Port wrong error
+    def check_port_wrong_error(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.PORT_ERROR_MESSAGE)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+
+        # Server config page / Port files blank
+
+    def input_port_blank(self, port):
+        port_blank_input = self.driver.find_element(*self.PORT_SELECTOR)
+        port_blank_input.clear()
+        time.sleep(3)
+        port_blank_input.send_keys(Keys.CONTROL, 'a')
+        port_blank_input.send_keys(Keys.BACKSPACE)
+        port_blank_input.send_keys(port)
+
+
+
+
+        # Server config page / Port Blank error message
+    def check_port_blank_error(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.PORT_BLANK_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+
+
+    # Server config page / Serial Port Address filed
+
+    def input_serial_port(self, serial_port):
+        serial_port_input = self.driver.find_element(*self.SERIAL_PORT_SELECTOR)
+        serial_port_input.clear()
+        time.sleep(3)
+        serial_port_input.send_keys(Keys.CONTROL, 'a')
+        serial_port_input.send_keys(Keys.BACKSPACE)
+        serial_port_input.send_keys(serial_port)
+
+
+    # Server config page / Verify Serial Port wrong error
+    def check_serial_port_wrong_error(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.SERIAL_PORT_ERROR_MESSAGE)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
+
+
+       # Server config page / Serial Port files blank
+    def input_serial_port_blank(self, serial_port):
+        serial_port_blank_input = self.driver.find_element(*self.SERIAL_PORT_SELECTOR)
+        serial_port_blank_input.clear()
+        time.sleep(3)
+        serial_port_blank_input.send_keys(Keys.CONTROL, 'a')
+        serial_port_blank_input.send_keys(Keys.BACKSPACE)
+        serial_port_blank_input.send_keys(serial_port)
+
+
+
+     # Server config page / Serial Port Blank error message
+    def check_serial_port_blank_error(self):
+        loop_count = 0
+        while loop_count < 1:
+            try:
+                web_element = self.driver.find_element(*self.SERIAL_PORT_BLANK_ERROR)
+                return web_element
+            except WebDriverException:
+                pass
+            loop_count += 1
+        assert False
 
 
 
@@ -739,11 +891,9 @@ def step_impl(context):
     context.allSteps.click_login()
 
 
-
 @step("clicks on the action button")
 def step_impl(context):
     context.allSteps.click_action_btn()
-
 
 
 @then("the user should be redirected to the homepage")
@@ -780,6 +930,7 @@ def step_impl(context):
 @step("I refresh the page")
 def step_impl(context):
     context.allSteps.driver_refresh()
+    time.sleep(3)
 
 
 @step("I click on the clock mode option")
@@ -983,7 +1134,7 @@ def step_impl(context, phone_number):
 
 
 @step("I enter a valid password '{set_password}'")
-def step_impl(context,set_password):
+def step_impl(context, set_password):
     context.allSteps.set_password(set_password)
 
 
@@ -1047,7 +1198,6 @@ def step_impl(context):
         print("FAILURE: The error message is not displayed.")
 
 
-
 @then("there should be an error message that password is mismatch")
 def step_impl(context):
     password_mismatch_error = context.allSteps.password_mismatch_error()
@@ -1065,7 +1215,6 @@ def step_impl(context):
 @step("I enter an '{fullname}' to fullname field to edit")
 def step_impl(context, fullname):
     context.allSteps.input_fullname(fullname)
-
 
 
 @step("I edit email_address_field '{email}'")
@@ -1168,7 +1317,6 @@ def step_impl(context):
     context.allSteps.select_DEGC()
 
 
-
 @step("I click on Pressure units of measure drop down list")
 def step_impl(context):
     context.allSteps.pressure_measure_units_dropdown()
@@ -1213,12 +1361,12 @@ def step_impl(context):
 
 
 @step("Click and edit '{render_engine_read}' App Render Engine read")
-def step_impl(context,render_engine_read):
+def step_impl(context, render_engine_read):
     context.allSteps.input_render_engine_read(render_engine_read)
 
 
 @step("Click and edit '{render_engine_write}' App Render Engine write")
-def step_impl(context,render_engine_write):
+def step_impl(context, render_engine_write):
     context.allSteps.input_render_engine_write(render_engine_write)
 
 
@@ -1231,6 +1379,125 @@ def step_impl(context):
 def step_impl(context):
     role_updated_message = context.allSteps.check_role_updated_message()
     if role_updated_message.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("Click on server config")
+def step_impl(context):
+    context.allSteps.click_server_config()
+    time.sleep(2)
+
+
+@step("Click on ethernet/serial toggle")
+def step_impl(context):
+    context.allSteps.ethernet_serial_toggle()
+    time.sleep(3)
+
+
+@step("Click to Update")
+def step_impl(context):
+    context.allSteps.update_server_config()
+
+
+@step("Verify changes")
+def step_impl(context):
+    server_config_updated_message = context.allSteps.check_server_config_updated_message()
+    if server_config_updated_message.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@then("Click on  Log Cs Communication Messages toggle")
+def step_impl(context):
+    context.allSteps.click_Log_Cs_Communication_Messages_toggle()
+
+
+@step("I Enter '{ip_address}' IP Address")
+def step_impl(context, ip_address):
+    context.allSteps.input_ip_address(ip_address)
+
+
+@then("Verify that error message is here")
+def step_impl(context):
+    ip_address_wrong_error = context.allSteps.check_ip_address_wrong_error()
+    if ip_address_wrong_error.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("I leave '{ip_address_blank}' ip address filed blank")
+def step_impl(context, ip_address_blank):
+    context.allSteps.input_ip_address_blank(ip_address_blank)
+
+
+@step("Verify blank filed error message")
+def step_impl(context):
+    ip_address_blank_error = context.allSteps.check_ip_address_blank_error()
+    if ip_address_blank_error.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("Enter '{port}' Port")
+def step_impl(context, port):
+    context.allSteps.input_port(port)
+
+
+
+@step("Check error message")
+def step_impl(context):
+    port_wrong_error = context.allSteps.check_port_wrong_error()
+    if port_wrong_error.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+
+@step("I leave port '{port_blank}' filed blank")
+def step_impl(context, port_blank):
+    context.allSteps.input_port_blank(port_blank)
+
+
+
+@step("Verify blank error message")
+def step_impl(context):
+    port_blank_error = context.allSteps.check_port_blank_error()
+    if port_blank_error.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+@step("I enter '{serial_port}' serial port")
+def step_impl(context,serial_port):
+    context.allSteps.input_serial_port(serial_port)
+
+
+@step("Check seral port error message")
+def step_impl(context):
+    serial_port_wrong_error = context.allSteps.check_serial_port_wrong_error()
+    if serial_port_wrong_error.is_displayed():
+        print("SUCCESS: The error message is displayed.")
+    else:
+        print("FAILURE: The error message is not displayed.")
+
+
+
+@step("I leave serial port '{serial_port_blank}' filed blank")
+def step_impl(context, serial_port_blank):
+    context.allSteps.input_port_blank(serial_port_blank)
+
+
+@step("Verify seral port blank error message")
+def step_impl(context):
+    serial_port_blank_error = context.allSteps.check_serial_port_blank_error()
+    if serial_port_blank_error.is_displayed():
         print("SUCCESS: The error message is displayed.")
     else:
         print("FAILURE: The error message is not displayed.")
